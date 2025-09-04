@@ -6,7 +6,6 @@ import com.banking.userservice.model.User;
 import com.banking.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -87,5 +86,11 @@ public class UserService {
             throw new RuntimeException("User not found with id " + id);
         }
         userRepository.deleteById(id);
+    }
+
+    public String getUserEmailById(Long id) {
+        return userRepository.findById(id)
+                .map(User::getEmail)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
 }

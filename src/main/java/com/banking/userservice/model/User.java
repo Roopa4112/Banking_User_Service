@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data
+@Table(name="user")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -24,4 +26,5 @@ public class User {
 
     // Role: CUSTOMER or EMPLOYEE
     private String role;
+
 }

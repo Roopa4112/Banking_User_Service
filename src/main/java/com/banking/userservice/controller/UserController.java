@@ -10,10 +10,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
 
     // ➕ Create new user
     @PostMapping

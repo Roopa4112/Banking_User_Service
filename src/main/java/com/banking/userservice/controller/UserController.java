@@ -2,7 +2,10 @@ package com.banking.userservice.controller;
 
 import com.banking.userservice.model.User;
 import com.banking.userservice.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +27,15 @@ public class UserController {
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
-
+//
     // 🔑 Login
     @PostMapping("/login")
     public User login(@RequestBody User user) {
         return userService.login(user.getEmail(), user.getPassword());
     }
+
+
+
 
 
     // 🔍 Get user by ID
